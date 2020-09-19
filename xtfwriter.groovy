@@ -24,7 +24,7 @@ def emailHtml = new MarkupTemplateEngine().createTemplate(emailHtmlTemplate).mak
 
 def model = [abbaustellen: [new Abbaustelle(tid: "5c6be6dd-7111-42fd-9eae-bd46fefa3c93", nummer: "5432", name: "Hellstätt", bemerkungen: "Fubar", geomRef: "5e5bb99e-2f68-499e-aebe-d01f05b9ea88")]]
 
-def abbaustellenTemplate = """
+def template = """
 xmlDeclaration()
 'SO_AFU_Abbaustellen_20200918.Abbaustellen'(BID: 'bX') {
    abbaustellen.each {
@@ -35,7 +35,7 @@ xmlDeclaration()
 TemplateConfiguration config = new TemplateConfiguration();         
 config.setAutoIndent(true)
 config.setAutoNewLine(true)
-def abbaustellenXml = new MarkupTemplateEngine(config).createTemplate(abbaustellenTemplate).make(model)
+def abbaustellenXml = new MarkupTemplateEngine(config).createTemplate(template).make(model)
 
 
 println abbaustellenXml
